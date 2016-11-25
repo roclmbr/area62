@@ -1,0 +1,19 @@
+current directory: /var/www/area62/vendor/bundle/ruby/2.3.0/gems/byebug-9.0.6/ext/byebug
+/home/steve/.rvm/rubies/ruby-2.3.1/bin/ruby -r ./siteconf20161124-26031-1r8eeeb.rb extconf.rb
+creating Makefile
+
+current directory: /var/www/area62/vendor/bundle/ruby/2.3.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /var/www/area62/vendor/bundle/ruby/2.3.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling context.c
+compiling threads.c
+compiling locker.c
+compiling byebug.c
+linking shared-object byebug/byebug.so
+
+current directory: /var/www/area62/vendor/bundle/ruby/2.3.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20161124-26031-1ea6k4g/byebug
