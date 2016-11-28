@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+      @user = User.find(params[:id])
   end
 
   def new
@@ -13,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def create
@@ -27,15 +29,13 @@ class UsersController < ApplicationController
    end
 
   def update
-    respond_to do |format|
+    @user = User.find(params[:id])
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+          flash[:success] = "Your account was updated successfully"
+          redirect_to articles_path
       else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+          render 'edit'
       end
-    end
   end
 
   def destroy
