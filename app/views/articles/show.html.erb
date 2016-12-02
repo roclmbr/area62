@@ -17,7 +17,8 @@
     </ul>
 <% end %>
     <%= simple_format(@article.description) %>
-    <% if @article.categories.any? %>
+    
+    <% if @article.categories.any? %> 
         <p>Categories: <%= render @article.categories %></p>
     <% end %>
     <div class="article-actions">
@@ -26,5 +27,20 @@
         <%= link_to "Delete this article", article_path(@article), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-xs btn-danger" %>
         <% end %>
         <%= link_to "View all articles", articles_path, class: "btn btn-xs btn-success" %>
+    </div>
+    <div>
+        <p><b>Comments:</b></p>
+    <% @comments.each do |comment| %>
+        <div>
+            <p>- <%= comment.comment %></p>
+        </div>
+    <% end %> 
+    <%= form_for [@article, Comment.new] do |f| %>
+        <div>
+            <%= f.label :comment, "New comment" %><br>
+            <%= f.text_area :comment, rows: 5, class: "form-control", placeholder: "Comments ..."%>
+        </div>
+    <p><%= f.submit "add comment" %></p>
+    <% end %>
     </div>
 </div>
