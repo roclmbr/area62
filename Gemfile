@@ -16,6 +16,10 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'will_paginate', '~> 3.1.1'
 gem 'will_paginate-bootstrap'
 gem 'rails-controller-testing'
+gem 'ckeditor'
+gem "paperclip"
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'byebug', platform: :mri
