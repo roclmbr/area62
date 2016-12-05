@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
     
+    mount Ckeditor::Engine => '/ckeditor'
     resources :users, except:[:new]
     resources :articles
     root 'welcome#home'
