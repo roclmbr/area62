@@ -24,13 +24,17 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-      if @user.save
-          session[:user_id] = @user.id
-          flash[:success] = "Welcome to Area62 #{@user.username}"
-          redirect_to user_path(@user)
-      else
-          render 'new'
-      end
+        if @user.save
+              
+             # Sends email to user when user is created.
+            WelcomeMailer.welcome_email(@user).deliver
+              
+              session[:user_id] = @user.id
+              flash[:success] = "Welcome to Area62 #{@user.username}"
+              redirect_to user_path(@user)
+          else
+              render 'new'
+          end
    end
 
   def update

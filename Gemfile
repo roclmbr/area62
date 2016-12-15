@@ -20,6 +20,7 @@ gem 'ckeditor'
 gem "paperclip"
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug', platform: :mri
