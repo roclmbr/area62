@@ -3,8 +3,10 @@ class UsersController < ApplicationController
     
   before_action :require_same_user, only: [:edit, :update]
     
-  before_action :require_admin, only: [:destroy, :new]   
-
+  before_action :require_admin, only: [:destroy, :new] 
+    
+  before_action :require_active, only: [:index, :show, :new]
+ 
   def index
     @users = User.paginate(page: params[:page], per_page: 5)
   end
@@ -30,8 +32,8 @@ class UsersController < ApplicationController
             WelcomeMailer.welcome_email(@user).deliver
               
               session[:user_id] = @user.id
-              flash[:success] = "Welcome to Area62 #{@user.username}"
-              redirect_to user_path(@user)
+              flash[:success] = "Welcome to Area62 #{@user.username}. Check your email for directions on gaining access to the site."
+              redirect_to root_path
           else
               render 'new'
           end
@@ -59,7 +61,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:username, :email, :password, :comment)
+    params.require(:user).permit(:username, :email, :password, :comment)
     end
     
     def require_same_user
@@ -69,11 +71,19 @@ class UsersController < ApplicationController
            redirect_to root_path
        end
     end
-    
+ 
     def require_admin
         if logged_in? and !current_user.admin?
             flash[:danger] = "Only admin users can perform that action"
             redirect_to root_path
         end
+    end
+    
+    def require_active
+     
+       if !logged_in?
+           flash[:danger] = "Only active users can perform that action"
+           redirect_to root_path
+       end
     end
 end
