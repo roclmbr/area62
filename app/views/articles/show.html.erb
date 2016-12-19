@@ -31,8 +31,8 @@
     <div>
         <p><b>Comments:</b></p>
     <% @comments.each do |comment| %>
-        <div>
-            <p>- <%= simple_format(comment.comment) %></p>
+         <div>
+            - <%= simple_format(comment.comment) %>
         </div>
     <% end %> 
     <%= form_for [@article, Comment.new] do |f| %>
