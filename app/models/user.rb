@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
     has_many :articles, dependent: :destroy
+    has_many :comments
+    has_many :images
     before_save { self.email = email.downcase }
     has_secure_password
     validates :username, presence:true, 

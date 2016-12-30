@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-    before_action :set_article, only: [:edit, :update, :show, :destroy]
+    before_action :set_article, only: [ :edit, :update, :show, :destroy]
     before_action :require_user, except: [:index, :show]
     before_action :require_same_user, only: [:edit, :update, :destroy]
     before_action :require_active, only: [:new, :show, :destroy, :index]
@@ -24,7 +24,8 @@ class ArticlesController < ApplicationController
         if @article.save
             flash[:success] = "Article successfully created"
             redirect_to article_path(@article)   
-            @articles = Article.paginate(page: params[:page], per_page: 5)      else
+            @articles = Article.paginate(page: params[:page], per_page: 5)
+        else
             render 'new'
         end
     end

@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def show
       @user_articles = @user.articles.paginate(page: params[:page], per_page: 5)
+      @user_images = @user.images.paginate(page: params[:page], per_page: 5)
   end
 
   def new

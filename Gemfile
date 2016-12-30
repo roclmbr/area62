@@ -21,6 +21,7 @@ gem "paperclip"
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'figaro'
+gem 'ransack'
 
 group :development, :test do
   gem 'byebug', platform: :mri

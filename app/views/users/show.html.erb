@@ -1,21 +1,46 @@
-<h1 align="center">Welcome to <%= @user.username %>'s page</h1>
-<div class="row">
+<div>
+  <h1 align="center">Welcome to <%= @user.username %>'s page</h1>
+  <div class="row">
     <div class="col-md-4 col-md-offset-4 center">
         <%= gravatar_for @user, size: 150 %>
     </div>
+  </div>
 </div>
-<h4 align="center"><%= @user.username %>'s articles</h4>
-<div class="center">
-
-<%= will_paginate @user_articles %>
-
+<div>
+  <h4 align="center">Articles</h4>
+  <div align="center">
+    <%= will_paginate @user_articles %>
+    </div>
+      <%= render 'articles/article', obj: @user_articles %>
+    <div align="center">
+    <%= will_paginate @user_articles %>
+  </div>
 </div>
-
-<%= render 'articles/article', obj: @user_articles %>
-
-<div class="center">
-
-<%= will_paginate @user_articles %>
-
+<div>
+  <h4 align="center">Images</h4>
+    <div align="center">
+      <%= will_paginate @user_images %>
+    </div>
+      <table>
+        <% @user_images.each do |image| %>
+          <tr>
+            <td><%= link_to image.name, image_path(image) %></td>
+            <td><%= image_tag image.picture.url, size: "120x100" %></td>
+              <% if current_user == @user %>
+                <td><%= link_to t('.edit', :default => t("helpers.links.edit")),
+                edit_image_path(image), :class => 'btn btn-default btn-xs' %>
+                <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                image_path(image),
+                :method => :delete,
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                :class => 'btn btn-xs btn-danger' %>
+                </td>
+              <% end %>
+          </tr>
+        <% end %>
+      </table>
+    <div align="center">
+      <%= will_paginate @user_images %>
+    </div>
 </div>
 
