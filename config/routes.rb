@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
     
+  resources :images
     mount Ckeditor::Engine => '/ckeditor'
     resources :users, except:[:new]
     resources :articles
