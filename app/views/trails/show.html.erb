@@ -1,21 +1,14 @@
+<h2 align="center"><%= @trail.name %></h2>
+<div class="well col-xs-8 col-xs-offset-2">
+    <%= simple_format(@trail.description) %>
+    Difficulty Rating: <%= @trail.rating %>
+</div>
+<div>
+    <iframe width="300" height="300" frameborder="0" style="border:0"
+     src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAlTjh0AeNc0MPBnuOki5HZCKEZnAVDNmE&q=<%= @trail.lat %>, <%= @trail.long %>"
+     allowfullscreen>sudo 
+    </iframe>
+</div>
 <p>
-  <strong>Name:</strong>
-  <%= @trail.name %>
+    <%= link_to 'Back to all trails', trails_path, class: "btn btn-xs btn-success"%>
 </p>
-
-<p>
-  <strong>Description:</strong><br />
-  <%= @trail.description %>
-</p>
-
-<p>
-  <strong>Rating:</strong>
-  <%= @trail.rating %>
-</p>
-
-<iframe width="300" height="300" frameborder="0" style="border:0"
- src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAlTjh0AeNc0MPBnuOki5HZCKEZnAVDNmE&q=<%= @trail.lat %>, <%= @trail.long %>"
- allowfullscreen>sudo 
-</iframe>
-<br />
-<%= link_to 'Back to all trails', trails_path, class: "btn btn-xs btn-success"%>
