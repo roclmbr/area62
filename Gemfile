@@ -22,6 +22,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'figaro'
 gem 'ransack'
+gem 'gmaps4rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
